@@ -45,4 +45,20 @@ class WizardTest {
 
         assertEquals(70, evilWizard.mana)
     }
+    @Test
+    fun train_manaIsMoreThanOrEqualtoFive() {
+        evilWizard.mana = 5 // 30 + 40 = 70, so mana should be set to 70
+        val priorSpellAttackPower = evilWizard.spellPower
+
+        evilWizard.train()
+        assertEquals(priorSpellAttackPower+1, evilWizard.spellPower)
+        assertEquals(0,evilWizard.mana)
+    }
+    @Test
+    fun train_manaIsLessThanFive() {
+        evilWizard.mana = 4 // 30 + 40 = 70, so mana should be set to 70
+        val priorSpellAttackPower = evilWizard.spellPower
+        evilWizard.train()
+        assertEquals(priorSpellAttackPower, evilWizard.spellPower)
+    }
 }
